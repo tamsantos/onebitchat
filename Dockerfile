@@ -1,15 +1,16 @@
 FROM ruby:2.3-slim
-# Install Dependencies
-RUN apt-get update && apt-get install -qq -y --no-install-recommends \ build-essential nodejs libpq-dev
-# Set path
+# Instala nossas dependencias
+RUN apt-get update && apt-get install -qq -y --no-install-recommends \
+      build-essential nodejs libpq-dev
+# Seta nosso path
 ENV INSTALL_PATH /onebitchat
-# Create directory
+# Cria nosso diretório
 RUN mkdir -p $INSTALL_PATH
-# Set path as main directory
+# Seta o nosso path como o diretório principal
 WORKDIR $INSTALL_PATH
-# Copy Gemfile to the container
+# Copia o nosso Gemfile para dentro do container
 COPY Gemfile ./
-# Set path for the gems
+# Seta o path para as Gems
 ENV BUNDLE_PATH /box
-# Copy the code to the container
+# Copia nosso código para dentro do container
 COPY . .
